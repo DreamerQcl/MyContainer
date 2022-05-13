@@ -13,6 +13,7 @@ public:
 
     ~Container(){
         free(data);
+        data = nullptr;
     }
 
     ///返回容器容量
@@ -44,6 +45,7 @@ public:
                 data[i] = data[i+1];
             }
             size--;
+            return 0;
         }
     }
 
@@ -69,6 +71,8 @@ public:
     int Empty(){
         if (size == 0){
             return 0;
+        } else{
+            return -1;
         }
     }
 
