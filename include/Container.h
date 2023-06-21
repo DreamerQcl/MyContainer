@@ -99,11 +99,11 @@ private:
 
     ///更新容器容量
     void UpdateCapacity(int numOfElement){
-        T* newdata = (T *) malloc(numOfElement * 2 * sizeof(T));
-        memcpy(newdata,data,size * sizeof (T));
+        T* newData = (T *) malloc(numOfElement * 2 * sizeof(T));
+        memcpy(newData,data,size * sizeof (T));
         capacity = numOfElement * 2;
         free(data);
-        data = newdata;
+        data = newData;
     }
 
 };

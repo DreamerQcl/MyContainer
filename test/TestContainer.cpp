@@ -1,11 +1,11 @@
-#include <assert.h>
 #include <iostream>
-#include "Container.h"
+#include <Container.h>
+#include <gtest/gtest.h>
 
-int main() {
+TEST(TestContainer, TestAdd) {
     Container<int> container;
-    assert(container.Size() == 0);
-    assert(container.Capacity() != 0);
+    ASSERT_EQ(0, container.Size());
+    ASSERT_NE(0, container.Capacity());
 
     container.Add(1);
     container.Add(2);
@@ -13,18 +13,15 @@ int main() {
     container.Add(4);
     container.Add(5);
     container.Add(6);
-    assert(container.Size() != 0);
-    assert(container.Empty());
+    ASSERT_NE(0, container.Size());
 
-    container.Insert(2,3);
+    ASSERT_EQ(-1, container.Empty());
+
+    ASSERT_EQ(0, container.Delete(2));
+    ASSERT_EQ(4, container.GetElem(2));
+
+    ASSERT_EQ(0, container.Insert(2, 2));
+
     container.Show();
 
-    std::cout<<container.GetElem(0)<<std::endl;
-
-    container.Delete(2);
-    assert(container.GetElem(2) == 3);
-
-    assert(container.Capacity() == 10);
-
-    return 0;
 }
